@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giàn Phơi & Cửa Lưới Minh Phát - Giải Pháp Không Gian Sống Thông Minh</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#1e3a8a', // Deep Blue (Xanh dương đậm từ logo)
+                            dark: '#172554',
+                            light: '#dbeafe'
+                        },
+                        gold: {
+                            DEFAULT: '#d97706', // Gold/Bronze (Vàng đồng từ logo)
+                            light: '#fef3c7',
+                            dark: '#b45309'
+                        },
+                        darkBg: '#0f172a'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.15); opacity: 0.4; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+        .float-badge {
+            animation: pulse-ring 2s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- Top Bar -->
+    <div class="bg-slate-900 text-slate-300 text-xs sm:text-sm py-2 px-4 border-b border-gold/30">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-4">
+                <span><i class="fas fa-map-marker-alt text-gold mr-1"></i> Phục vụ tận nơi tại TP.HCM & Toàn Quốc</span>
+                <span class="hidden md:inline"><i class="fas fa-clock text-gold mr-1"></i> 8:00 - 21:00 (Thứ 2 - Chủ Nhật)</span>
+            </div>
+            <div class="flex items-center gap-4 flex-wrap justify-center">
+                <a href="tel:0967220838" class="hover:text-gold font-semibold transition"><i class="fas fa-phone-alt text-gold mr-1"></i> 0967 220 838</a>
+                <span class="text-gold">-</span>
+                <a href="tel:0879319345" class="hover:text-gold font-semibold transition">0879 319 345</a>
+                <span class="hidden sm:inline">|</span>
+                <span class="text-gold font-medium"><i class="fas fa-shield-alt mr-1"></i> Bảo hành đến 5 năm</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo & Brand -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-xl bg-slate-900 border border-gold/50 flex items-center justify-center shadow-md overflow-hidden group-hover:scale-105 transition p-1">
+                        <div class="text-gold font-extrabold text-[10px] text-center tracking-tighter leading-tight">MINH<br>PHÁT</div>
+                    </div>
+                    <div>
+                        <span class="text-xl sm:text-2xl font-extrabold text-primary tracking-wide">MINH PHÁT</span>
+                        <span class="block text-xs font-semibold tracking-wider text-gold uppercase">Giàn Phơi & Cửa Lưới</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden lg:flex items-center gap-8 font-medium text-slate-700">
+                    <a href="#home" class="text-primary font-semibold hover:text-gold transition">Trang Chủ</a>
+                    <a href="#about" class="hover:text-gold transition">Về Chúng Tôi</a>
+                    <a href="#products" class="hover:text-gold transition">Sản Phẩm</a>
+                    <a href="#pricing" class="hover:text-gold transition">Bảng Giá</a>
+                    <a href="#advantages" class="hover:text-gold transition">Ưu Điểm</a>
+                    <a href="#contact" class="hover:text-gold transition">Liên Hệ</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <a href="tel:0967220838" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-primary to-slate-900 text-white font-medium shadow-md shadow-primary/20 hover:opacity-95 transition flex items-center gap-2 border border-gold/40">
+                        <i class="fas fa-phone-alt text-gold"></i> 0967 220 838
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-btn" class="lg:hidden text-slate-800 focus:outline-none p-2 rounded-lg hover:bg-slate-100">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-2 shadow-lg">
+            <a href="#home" class="block px-3 py-2 rounded-lg hover:bg-slate-50 font-medium text-primary">Trang Chủ</a>
+            <a href="#about" class="block px-3 py-2 rounded-lg hover:bg-slate-50 font-medium">Về Chúng Tôi</a>
+            <a href="#products" class="block px-3 py-2 rounded-lg hover:bg-slate-50 font-medium">Sản Phẩm</a>
+            <a href="#pricing" class="block px-3 py-2 rounded-lg hover:bg-slate-50 font-medium">Bảng Giá</a>
+            <a href="#advantages" class="block px-3 py-2 rounded-lg hover:bg-slate-50 font-medium">Ưu Điểm</a>
+            <a href="#contact" class="block px-3 py-2 rounded-lg hover:bg-slate-50 font-medium">Liên Hệ</a>
+            <div class="pt-2 flex flex-col gap-2">
+                <a href="tel:0967220838" class="w-full text-center block py-2.5 rounded-xl bg-primary text-white font-medium shadow">Gọi ngay: 0967 220 838</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner Section -->
+    <section id="home" class="relative bg-gradient-to-b from-slate-900 via-primary to-slate-900 text-white py-20 sm:py-28 overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#d97706_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/20 text-gold text-xs sm:text-sm font-semibold tracking-wider border border-gold/40">
+                        <i class="fas fa-star"></i> GIÀN PHƠI CỬA LƯỚI MINH PHÁT
+                    </div>
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+                        Giải Pháp Không Gian Sống <span class="text-gold">Thông Minh & An Toàn</span>
+                    </h1>
+                    <p class="text-slate-300 text-base sm:text-lg max-w-xl mx-auto lg:mx-0">
+                        Chuyên thi công, lắp đặt giàn phơi thông minh, lưới an toàn, cửa chống muỗi, cửa xếp nhựa nhôm và bạt che nắng mưa cao cấp chính hãng. Khảo sát & lắp đặt tận nơi nhanh chóng.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#products" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gold text-slate-950 font-bold shadow-lg hover:bg-gold-light transition text-center flex items-center justify-center gap-2">
+                            <i class="fas fa-boxes"></i> Xem 7 Hạng Mục Sản Phẩm
+                        </a>
+                        <a href="tel:0967220838" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/10 border border-gold/50 text-white font-semibold hover:bg-white/20 transition text-center flex items-center justify-center gap-2 backdrop-blur-sm">
+                            <i class="fas fa-phone-alt text-gold"></i> 0967 220 838
+                        </a>
+                    </div>
+                    <!-- Highlights bar -->
+                    <div class="grid grid-cols-3 gap-4 pt-8 border-t border-slate-700">
+                        <div>
+                            <div class="text-xl sm:text-2xl font-extrabold text-gold">10+ Năm</div>
+                            <div class="text-xs sm:text-sm text-slate-300 font-medium">Kinh Nghiệm</div>
+                        </div>
+                        <div>
+                            <div class="text-xl sm:text-2xl font-extrabold text-gold">Miễn Phí</div>
+                            <div class="text-xs sm:text-sm text-slate-300 font-medium">Khảo Sát & Lắp Đặt</div>
+                        </div>
+                        <div>
+                            <div class="text-xl sm:text-2xl font-extrabold text-gold">Bảo Hành</div>
+                            <div class="text-xs sm:text-sm text-slate-300 font-medium">Đến 5 Năm</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Banner Image Card & Logo showcase -->
+                <div class="relative flex justify-center">
+                    <div class="relative w-full max-w-md bg-slate-800/80 backdrop-blur-md p-6 rounded-3xl border border-gold/40 shadow-2xl text-center">
+                        <div class="mb-4 inline-block p-4 rounded-2xl bg-slate-900 border border-gold/30 shadow-inner">
+                            <div class="text-gold font-black text-2xl tracking-widest">MINH PHÁT</div>
+                            <div class="text-slate-300 text-xs mt-1">Cửa Lưới - Giàn Phơi</div>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">HOTLINE TƯ VẤN 24/7</h3>
+                        <div class="space-y-2 mb-6">
+                            <a href="tel:0967220838" class="block text-xl sm:text-2xl font-black text-gold hover:underline"><i class="fas fa-phone-alt mr-2 text-sm"></i>0967 220 838</a>
+                            <a href="tel:0879319345" class="block text-xl sm:text-2xl font-black text-white hover:underline"><i class="fas fa-phone-alt mr-2 text-sm"></i>0879 319 345</a>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-700 text-xs text-slate-300 space-y-2 text-left">
+                            <div class="flex items-center gap-2"><i class="fas fa-check-circle text-gold"></i> Cam kết hàng chính hãng 100%</div>
+                            <div class="flex items-center gap-2"><i class="fas fa-check-circle text-gold"></i> Thợ kỹ thuật chuyên nghiệp, tận tâm</div>
+                            <div class="flex items-center gap-2"><i class="fas fa-check-circle text-gold"></i> Hỗ trợ bảo trì nhanh chóng trong ngày</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold font-semibold uppercase tracking-wider text-sm bg-gold/10 px-3 py-1 rounded-full border border-gold/30">Về Thương Hiệu Minh Phát</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-primary mt-3">Giàn Phơi & Cửa Lưới Minh Phát</h2>
+                <p class="text-slate-600 mt-4 text-base">Chúng tôi chuyên cung cấp giải pháp toàn diện nâng tầm không gian sống với các sản phẩm cơ khí và nội thất thông minh: Giàn phơi, lưới an toàn, cửa chống muỗi, cửa xếp nhựa nhôm và bạt che nắng mưa.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-200 hover:shadow-xl transition group">
+                    <div class="w-14 h-14 rounded-2xl bg-primary text-gold flex items-center justify-center text-2xl mb-6 shadow-md group-hover:scale-110 transition">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Chất Lượng Vượt Trội</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Sản phẩm được tuyển chọn kỹ lưỡng, vật liệu hợp kim nhôm, inox 304 không gỉ, chịu lực cao và vận hành êm ái.</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-200 hover:shadow-xl transition group">
+                    <div class="w-14 h-14 rounded-2xl bg-primary text-gold flex items-center justify-center text-2xl mb-6 shadow-md group-hover:scale-110 transition">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Lắp Đặt Trọn Gói</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Đội ngũ kỹ thuật hỗ trợ khảo sát tận nơi miễn phí, thi công nhanh gọn, thẩm mỹ cao và chuẩn kỹ thuật.</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-200 hover:shadow-xl transition group">
+                    <div class="w-14 h-14 rounded-2xl bg-primary text-gold flex items-center justify-center text-2xl mb-6 shadow-md group-hover:scale-110 transition">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Hậu Mãi Chu Đáo</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Chính sách bảo hành chính hãng từ 2 đến 5 năm, sẵn sàng hỗ trợ khách hàng nhanh chóng khi có yêu cầu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section (7 Hạng Mục) -->
+    <section id="products" class="py-16 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold font-semibold uppercase tracking-wider text-sm bg-gold/10 px-3 py-1 rounded-full border border-gold/30">Danh Mục Sản Phẩm</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-primary mt-3">7 Hạng Mục Sản Phẩm Chính</h2>
+                <p class="text-slate-600 mt-4 text-base">Giải pháp tiện ích hoàn hảo cho mọi không gian căn hộ chung cư, nhà phố và biệt thự.</p>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- 1. Giàn phơi thông minh điện tử -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition border border-slate-200 flex flex-col">
+                    <div class="relative h-52 overflow-hidden bg-slate-200">
+                        <img src="https://placehold.co/600x400/1e3a8a/ffffff?text=Gian+Phoi+Dien+Tu" alt="Giàn phơi thông minh điện tử" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                        <div class="absolute top-3 right-3 bg-gold text-slate-950 text-xs font-black px-3 py-1 rounded-full shadow">1. Cao Cấp</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">1. Giàn Phơi Thông Minh Điện Tử</h3>
+                            <p class="text-slate-600 text-sm mb-4">Điều khiển từ xa thông minh, tích hợp đèn UV diệt khuẩn, quạt sấy khô quần áo và cảm biến tự dừng khi gặp vật cản.</p>
+                            <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                                <li><i class="fas fa-check text-gold mr-2"></i> Remote điều khiển từ xa</li>
+                                <li><i class="fas fa-check text-gold mr-2"></i> Sấy khô & diệt khuẩn UV</li>
+                                <li><i class="fas fa-check text-gold mr-2"></i> Tải trọng lớn lên đến 50kg</li>
+                            </ul>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                            <a href="tel:0967220838" class="text-primary font-bold hover:text-gold text-sm flex items-center gap-1"><i class="fas fa-phone-alt"></i> Gọi 0967.220.838</a>
+                            <button onclick="openDetailModal('1. Giàn Phơi Thông Minh Điện Tử', 'Dòng sản phẩm cao cấp hiện đại nhất tích hợp remote điều khiển từ xa, đèn UV diệt khuẩn, quạt sấy khô quần áo nhanh chóng mùa mưa. Chất liệu nhôm đúc nguyên khối bền bỉ.')" class="px-4 py-2 rounded-xl bg-primary text-white hover:bg-slate-900 transition text-sm font-semibold">Xem Chi Tiết</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Giàn phơi quay tay gắn trần -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition border border-slate-200 flex flex-col">
+                    <div class="relative h-52 overflow-hidden bg-slate-200">
+                        <img src="https://placehold.co/600x400/172554/ffffff?text=Gian+Phoi+Quay+Tay" alt="Giàn phơi quay tay gắn trần" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                        <div class="absolute top-3 right-3 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full shadow">2. Bán Chạy</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">2. Giàn Phơi Quay Tay Gắn Trần</h3>
+                            <p class="text-slate-600 text-sm mb-4">Cơ cấu quay hãm vòng bi tự động nhẹ nhàng, giúp nâng hạ thanh phơi dễ dàng đón nắng toàn diện cho ban công.</p>
+                            <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                                <li><i class="fas fa-check text-gold mr-2"></i> Trục quay đồng trục siêu nhẹ</li>
+                                <li><i class="fas fa-check text-slate-700 mr-2"></i> Thanh phơi nhôm đục lỗ sẵn</li>
+                                <li><i class="fas fa-check text-slate-700 mr-2"></i> Tiết kiệm tối đa diện tích</li>
+                            </ul>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                            <a href="tel:0967220838" class="text-primary font-bold hover:text-gold text-sm flex items-center gap-1"><i class="fas fa-phone-alt"></i> Gọi 0967.220.838</a>
+                            <button onclick="openDetailModal('2. Giàn Phơi Quay Tay Gắn Trần', 'Sản phẩm thông dụng nhất cho căn hộ chung cư nhờ độ bền cao, cơ cấu hãm vòng bi chắc chắn giúp quay nhẹ nhàng cả khi phơi nhiều đồ nặng.')" class="px-4 py-2 rounded-xl bg-primary text-white hover:bg-slate-900 transition text-sm font-semibold">Xem Chi Tiết</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Giàn phơi xếp ngang gắn tường -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition border border-slate-200 flex flex-col">
+                    <div class="relative h-52 overflow-hidden bg-slate-200">
+                        <img src="https://placehold.co/600x400/b45309/ffffff?text=Gian+Phoi+Xep+Ngang" alt="Giàn phơi xếp ngang gắn tường" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                        <div class="absolute top-3 right-3 bg-gold text-slate-950 text-xs font-bold px-3 py-1 rounded-full shadow">3. Gọn Gàng</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">3. Giàn Phơi Xếp Ngang Gắn Tường</h3>
+                            <p class="text-slate-600 text-sm mb-4">Thiết kế gắn tường kéo ra khi phơi và xếp gọn sát tường khi không dùng. Phù hợp cho khu vực hẹp hoặc không có trần.</p>
+                            <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                                <li><i class="fas fa-check text-gold mr-2"></i> Khung xếp ziczac linh hoạt</li>
+                                <li><i class="fas fa-check text-slate-700 mr-2"></i> Hợp kim nhôm chịu lực cao</li>
+                                <li><i class="fas fa-check text-slate-700 mr-2"></i> Thích hợp sân phơi, lô gia nhỏ</li>
+                            </ul>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                            <a href="tel:0967220838" class="text-primary font-bold hover:text-gold text-sm flex items-center gap-1"><i class="fas fa-phone-alt"></i> Gọi 0967.220.838</a>
+                            <button onclick="openDetailModal('3. Giàn Phơi Xếp Ngang Gắn Tường', 'Giải pháp hoàn hảo cho ban công không có trần hoặc trần thạch cao yếu. Dễ dàng kéo ra đẩy vào gọn gàng sau khi sử dụng.')" class="px-4 py-2 rounded-xl bg-primary text-white hover:bg-slate-900 transition text-sm font-semibold">Xem Chi Tiết</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Lưới an toàn -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition border border-slate-200 flex flex-col">
+                    <div class="relative h-52 overflow-hidden bg-slate-200">
+                        <img src="https://placehold.co/600x400/1e3a8a/ffffff?text=Luoi+An+Toan" alt="Lưới an toàn ban công" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                        <div class="absolute top-3 right-3 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full shadow">4. Bảo Vệ</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">4. Lưới An Toàn Ban Công / Cửa Sổ</h3>
+                            <p class="text-slate-600 text-sm mb-4">Bảo vệ an toàn tuyệt đối cho trẻ nhỏ và gia đình ở nhà cao tầng. Tầm nhìn thoáng, không che khuất cảnh quan.</p>
+                            <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                                <li><i class="fas fa-check text-gold mr-2"></i> Cáp inox 304 bọc nhựa PE</li>
+                                <li><i class="fas fa-check text-slate-700 mr-2"></i> Chịu lực kéo cực cao</li>
+                                <li><i class="fas fa-check text-slate-700 mr-2"></i> Thẩm mỹ cao, tàng hình từ xa</li>
+                            </ul>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                            <a href="tel:0967220838" class="text-primary font-bold hover:text-gold text-sm flex items-center gap-1"><i class="fas fa-phone-alt"></i> Gọi 0967.220.838</a>
+                            <button onclick="openDetailModal('4. Lưới An Toàn Ban Công / Cửa Sổ', 'Bảo vệ an toàn cho trẻ nhỏ và thú cưng ở chung cư cao tầng. Cáp inox lõi xoắn chịu lực lên đến 90kg, tuổi thọ trên 10 năm.')" class="px-4 py-2 rounded-xl bg-primary text-white hover:bg-slate-900 transition text-sm font-semibold">Xem Chi Tiết</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Cửa chống muỗi hệ xếp lùa và tự cuốn -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition border border-slate-200 flex flex-col">
+                    <div class="relative h-52 overflow-hidden bg-slate-200">
+                        <img src="https://placehold.co/600x400/b45309/ffffff?text=Cua+Chong+Muoi" alt="Cửa chống muỗi hệ xếp lùa và tự cuốn" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                        <div class="absolute top-3 right-3 bg-gold text-slate-950 text-xs font-bold px-3 py-1 rounded-full shadow">5. Ngăn Côn Trùng</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">5. Cửa Chống Muỗi (Hệ Xếp Lùa & Tự Cuốn)</h3>
+                            <p class="text-slate-600 text-sm mb-4">Ngăn chặn hiệu quả muỗi, ruồi và côn trùng gây bệnh. Lưới sợi thủy tinh/inox cao cấp, khung nhôm sơn tĩnh điện bền đẹp.</p>
+                            <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                                <li><i class="fas fa-check text-gold mr-2"></i> Hệ xếp lùa & hệ tự cuốn lò xo</li>
+                                <li><i class="fas fa-check text-slate-700 mr-2"></i> Lưới mắt nhỏ thoáng khí</li>
+                                <li><i class="fas fa-check text-slate-700 mr-2"></i> An toàn sức khỏe gia đình</li>
+                            </ul>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                            <a href="tel:0967220838" class="text-primary font-bold hover:text-gold text-sm flex items-center gap-1"><i class="fas fa-phone-alt"></i> Gọi 0967.220.838</a>
+                            <button onclick="openDetailModal('5. Cửa Chống Muỗi Hệ Xếp Lùa & Tự Cuốn', 'Giải pháp phòng chống sốt xuất huyết và côn trùng hiệu quả. Thiết kế tinh tế phù hợp cho mọi kiểu cửa sổ và cửa đi với hệ xếp lùa và tự cuốn thông minh.')" class="px-4 py-2 rounded-xl bg-primary text-white hover:bg-slate-900 transition text-sm font-semibold">Xem Chi Tiết</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Cửa xếp lá nhôm lá nhựa -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition border border-slate-200 flex flex-col">
+                    <div class="relative h-52 overflow-hidden bg-slate-200">
+                        <img src="https://placehold.co/600x400/172554/ffffff?text=Cua+Xep+La+Nhom+Nhua" alt="Cửa xếp lá nhôm lá nhựa" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                        <div class="absolute top-3 right-3 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full shadow">6. Vách Ngăn</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">6. Cửa Xếp Lá Nhôm, Lá Nhựa</h3>
+                            <p class="text-slate-600 text-sm mb-4">Giải pháp vách ngăn phòng, cửa nhà vệ sinh, ngăn lạnh điều hòa hiện đại, tiết kiệm diện tích tối ưu khi đóng mở.</p>
+                            <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                                <li><i class="fas fa-check text-gold mr-2"></i> Lá nhôm cao cấp / Lá nhựa PVC</li>
+                                <li><i class="fas fa-check text-slate-700 mr-2"></i> Tiết kiệm diện tích tối đa</li>
+                                <li><i class="fas fa-check text-slate-700 mr-2"></i> Giữ nhiệt điều hòa hiệu quả</li>
+                            </ul>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                            <a href="tel:0967220838" class="text-primary font-bold hover:text-gold text-sm flex items-center gap-1"><i class="fas fa-phone-alt"></i> Gọi 0967.220.838</a>
+                            <button onclick="openDetailModal('6. Cửa Xếp Lá Nhôm, Lá Nhựa', 'Lựa chọn thông minh cho vách ngăn phòng, cửa phòng tắm hoặc ngăn lạnh điều hòa. Dễ dàng sử dụng, độ bền cao và thẩm mỹ.')" class="px-4 py-2 rounded-xl bg-primary text-white hover:bg-slate-900 transition text-sm font-semibold">Xem Chi Tiết</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Bạt che nắng mưa tự cuốn / Mái hiên / Bạt xếp -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition border border-slate-200 flex flex-col md:col-span-2 lg:col-span-3">
+                    <div class="grid grid-cols-1 md:grid-cols-3">
+                        <div class="relative h-52 md:h-full overflow-hidden bg-slate-200">
+                            <img src="https://placehold.co/600x400/1e3a8a/ffffff?text=Bat+Che+Nang+Mua" alt="Bạt che nắng mưa tự cuốn mái hiên bạt xếp" class="w-full h-full object-cover">
+                            <div class="absolute top-3 right-3 bg-gold text-slate-950 text-xs font-bold px-3 py-1 rounded-full shadow">7. Che Ngoài Trời</div>
+                        </div>
+                        <div class="p-6 md:p-8 md:col-span-2 flex flex-col justify-between">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-gold bg-gold/10 px-3 py-1 rounded-full border border-gold/30">Bảo Vệ Không Gian Ngoài Trời</span>
+                                <h3 class="text-2xl font-bold text-slate-900 mt-3 mb-3">7. Bạt Che Nắng Mưa Tự Cuốn / Mái Hiên / Bạt Xếp</h3>
+                                <p class="text-slate-600 text-sm mb-4">Hệ thống bạt che chuyên dụng cho ban công, hiên nhà, quán café, nhà hàng. Chất liệu bạt PVC dày dặn nhập khẩu, chống tia UV và chống thấm tuyệt đối.</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs text-slate-600 mb-6 font-medium">
+                                    <div><i class="fas fa-check text-gold mr-2"></i> Bạt tự cuốn lò xo lò xo</div>
+                                    <div><i class="fas fa-check text-gold mr-2"></i> Mái hiên di động quay tay</div>
+                                    <div><i class="fas fa-check text-gold mr-2"></i> Bạt xếp lượn sóng diện tích lớn</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between pt-4 border-t border-slate-100 flex-wrap gap-4">
+                                <a href="tel:0967220838" class="text-primary font-bold hover:text-gold text-sm flex items-center gap-1"><i class="fas fa-phone-alt"></i> Hotline: 0967.220.838 - 0879.319.345</a>
+                                <button onclick="openDetailModal('7. Bạt Che Nắng Mưa / Mái Hiên / Bạt Xếp', 'Hệ thống bạt che nắng mưa chuyên nghiệp, đa dạng mẫu mã và màu sắc. Giúp không gian luôn mát mẻ, chống nắng nóng và mưa tạt hiệu quả.')" class="px-5 py-2.5 rounded-xl bg-gold text-slate-950 font-bold hover:bg-gold-light transition text-sm shadow">Xem Chi Tiết</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section / Bảng Giá Tham Khảo -->
+    <section id="pricing" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold font-semibold uppercase tracking-wider text-sm bg-gold/10 px-3 py-1 rounded-full border border-gold/30">Bảng Giá Dịch Vụ</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-primary mt-3">Báo Giá Tham Khảo Trọn Gói</h2>
+                <p class="text-slate-600 mt-4 text-base">Giá đã bao gồm chi phí vận chuyển và lắp đặt hoàn thiện tận nơi. Liên hệ trực tiếp để có giá ưu đãi tốt nhất theo diện tích thực tế.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Package 1 -->
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 flex flex-col justify-between hover:shadow-xl transition">
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full inline-block mb-4">Gói Cơ Bản</div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Giàn Phơi & Lưới An Toàn</h3>
+                        <div class="text-3xl font-black text-gold my-4">Liên hệ <span class="text-xs text-slate-500 font-normal">tốt nhất</span></div>
+                        <ul class="space-y-3 text-sm text-slate-600 mb-8">
+                            <li><i class="fas fa-check text-gold mr-2"></i> Giàn phơi quay tay gắn trần</li>
+                            <li><i class="fas fa-check text-gold mr-2"></i> Lưới an toàn ban công tiêu chuẩn</li>
+                            <li><i class="fas fa-check text-gold mr-2"></i> Miễn phí lắp đặt trọn gói</li>
+                            <li><i class="fas fa-check text-gold mr-2"></i> Bảo hành chính hãng 2 năm</li>
+                        </ul>
+                    </div>
+                    <a href="tel:0967220838" class="w-full py-3 rounded-xl bg-primary text-white font-bold text-center hover:bg-slate-900 transition">
+                        <i class="fas fa-phone-alt mr-2"></i> Tư Vấn Ngay
+                    </a>
+                </div>
+
+                <!-- Package 2 (Highlighted) -->
+                <div class="bg-slate-900 text-white p-8 rounded-3xl border-2 border-gold flex flex-col justify-between shadow-2xl relative">
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gold text-slate-950 font-black text-xs px-4 py-1 rounded-full uppercase tracking-wider shadow">Phổ Biến Nhất</div>
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-gold bg-gold/10 px-3 py-1 rounded-full inline-block mb-4">Gói Combo Gia Đình</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Giàn Phơi Điện Tử & Cửa Lưới</h3>
+                        <div class="text-3xl font-black text-gold my-4">Ưu đãi <span class="text-xs text-slate-300 font-normal">đặc biệt</span></div>
+                        <ul class="space-y-3 text-sm text-slate-300 mb-8">
+                            <li><i class="fas fa-check text-gold mr-2"></i> Giàn phơi thông minh điện tử cao cấp</li>
+                            <li><i class="fas fa-check text-gold mr-2"></i> Cửa chống muỗi hệ xếp / tự cuốn</li>
+                            <li><i class="fas fa-check text-gold mr-2"></i> Khảo sát và lắp đặt miễn phí</li>
+                            <li><i class="fas fa-check text-gold mr-2"></i> Bảo hành chính hãng 5 năm</li>
+                        </ul>
+                    </div>
+                    <a href="tel:0967220838" class="w-full py-3 rounded-xl bg-gold text-slate-950 font-bold text-center hover:bg-gold-light transition shadow">
+                        <i class="fas fa-phone-alt mr-2"></i> Gọi 0967.220.838
+                    </a>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 flex flex-col justify-between hover:shadow-xl transition">
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full inline-block mb-4">Gói Toàn Diện</div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Bạt Che & Cửa Xếp Nhôm Nhựa</h3>
+                        <div class="text-3xl font-black text-gold my-4">Giá xưởng <span class="text-xs text-slate-500 font-normal">tốt nhất</span></div>
+                        <ul class="space-y-3 text-sm text-slate-600 mb-8">
+                            <li><i class="fas fa-check text-gold mr-2"></i> Bạt che nắng mưa / mái hiên / bạt xếp</li>
+                            <li><i class="fas fa-check text-gold mr-2"></i> Cửa xếp lá nhôm / lá nhựa</li>
+                            <li><i class="fas fa-check text-gold mr-2"></i> Đo đạc tận nơi chính xác</li>
+                            <li><i class="fas fa-check text-gold mr-2"></i> Bảo hành dài hạn uy tín</li>
+                        </ul>
+                    </div>
+                    <a href="tel:0967220838" class="w-full py-3 rounded-xl bg-primary text-white font-bold text-center hover:bg-slate-900 transition">
+                        <i class="fas fa-phone-alt mr-2"></i> Tư Vấn Ngay
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us / Advantages -->
+    <section id="advantages" class="py-16 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold font-semibold uppercase tracking-wider text-sm bg-gold/10 px-3 py-1 rounded-full border border-gold/30">Lý Do Chọn Minh Phát</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-primary mt-3">Ưu Điểm Vượt Trội</h2>
+                <p class="text-slate-600 mt-4 text-base">Chúng tôi luôn cam kết mang lại sự hài lòng tuyệt đối cho từng khách hàng.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="p-6 rounded-2xl bg-white border border-slate-200 text-center hover:-translate-y-1 transition shadow-sm">
+                    <div class="w-16 h-16 rounded-2xl bg-primary text-gold text-2xl flex items-center justify-center mx-auto mb-4 shadow">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Giá Gốc Tốt Nhất</h3>
+                    <p class="text-slate-600 text-sm">Cung cấp và phân phối trực tiếp không qua trung gian, tối ưu chi phí cho gia đình.</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-white border border-slate-200 text-center hover:-translate-y-1 transition shadow-sm">
+                    <div class="w-16 h-16 rounded-2xl bg-primary text-gold text-2xl flex items-center justify-center mx-auto mb-4 shadow">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Khảo Sát Miễn Phí</h3>
+                    <p class="text-slate-600 text-sm">Kỹ thuật viên mang mẫu tận nhà, đo đạc và tư vấn miễn phí 100%.</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-white border border-slate-200 text-center hover:-translate-y-1 transition shadow-sm">
+                    <div class="w-16 h-16 rounded-2xl bg-primary text-gold text-2xl flex items-center justify-center mx-auto mb-4 shadow">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Lắp Đặt Trong Ngày</h3>
+                    <p class="text-slate-600 text-sm">Đội ngũ thợ giàu kinh nghiệm lắp đặt nhanh gọn, sạch sẽ, chuẩn kỹ thuật.</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-white border border-slate-200 text-center hover:-translate-y-1 transition shadow-sm">
+                    <div class="w-16 h-16 rounded-2xl bg-primary text-gold text-2xl flex items-center justify-center mx-auto mb-4 shadow">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Bảo Hành 5 Năm</h3>
+                    <p class="text-slate-600 text-sm">Chính sách bảo hành dài hạn, bảo dưỡng định kỳ và hỗ trợ tận tâm.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Booking Form Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Info Column -->
+                <div class="space-y-6">
+                    <span class="text-gold font-semibold uppercase tracking-wider text-sm bg-gold/10 px-3 py-1 rounded-full border border-gold/30">Liên Hệ Đặt Lịch</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-primary leading-tight">
+                        Nhận Báo Giá & Khảo Sát <span class="text-gold">Tận Nơi Miễn Phí</span>
+                    </h2>
+                    <p class="text-slate-600 text-base">
+                        Quý khách cần tư vấn lắp đặt giàn phơi, lưới an toàn, cửa chống muỗi hay bạt che nắng mưa, vui lòng gọi điện trực tiếp hoặc điền form đăng ký bên cạnh.
+                    </p>
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-primary text-gold flex items-center justify-center text-xl shrink-0 shadow">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-500 font-medium">Hotline 1 (Hỗ trợ 24/7)</div>
+                                <a href="tel:0967220838" class="text-lg font-bold text-slate-900 hover:text-gold transition">0967 220 838</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-primary text-gold flex items-center justify-center text-xl shrink-0 shadow">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-500 font-medium">Hotline 2 (Tư vấn kỹ thuật)</div>
+                                <a href="tel:0879319345" class="text-lg font-bold text-slate-900 hover:text-gold transition">0879 319 345</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-primary text-gold flex items-center justify-center text-xl shrink-0 shadow">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-500 font-medium">Địa Chỉ Trụ Sở</div>
+                                <div class="text-base font-bold text-slate-900">TP.HCM & Các Tỉnh Lân Cận</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Card -->
+                <div class="bg-slate-900 text-white p-8 sm:p-10 rounded-3xl shadow-2xl border border-gold/40">
+                    <h3 class="text-2xl font-bold text-white mb-2">Đăng Ký Tư Vấn Nhanh</h3>
+                    <p class="text-slate-400 text-sm mb-6">Chúng tôi sẽ liên hệ lại ngay sau khi nhận được yêu cầu.</p>
+                    
+                    <form id="booking-form" onsubmit="handleBooking(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Họ và Tên</label>
+                            <input type="text" id="name" required class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-gold text-sm" placeholder="Nhập họ tên của bạn">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Số Điện Thoại</label>
+                            <input type="tel" id="phone" required class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-gold text-sm" placeholder="Nhập số điện thoại liên hệ">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Sản Phẩm Quan Tâm</label>
+                            <select id="service" class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-gold text-sm">
+                                <option value="Giàn phơi thông minh điện tử">1. Giàn phơi thông minh điện tử</option>
+                                <option value="Giàn phơi quay tay gắn trần">2. Giàn phơi quay tay gắn trần</option>
+                                <option value="Giàn phơi xếp ngang gắn tường">3. Giàn phơi xếp ngang gắn tường</option>
+                                <option value="Lưới an toàn ban công">4. Lưới an toàn ban công / cửa sổ</option>
+                                <option value="Cửa chống muỗi hệ xếp lùa và tự cuốn">5. Cửa chống muỗi hệ xếp lùa và tự cuốn</option>
+                                <option value="Cửa xếp lá nhôm lá nhựa">6. Cửa xếp lá nhôm, lá nhựa</option>
+                                <option value="Bạt che nắng mưa / Mái hiên / Bạt xếp">7. Bạt che nắng mưa / Mái hiên / Bạt xếp</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Địa Chỉ / Ghi Chú</label>
+                            <textarea id="note" rows="3" class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-gold text-sm" placeholder="Địa chỉ lắp đặt hoặc yêu cầu thêm..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3.5 rounded-xl bg-gold text-slate-950 font-bold shadow-md hover:bg-gold-light transition text-base">
+                            <i class="fas fa-paper-plane mr-2"></i> Gửi Yêu Cầu Tư Vấn
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Contact Buttons (Zalo, Messenger, Call) -->
+    <div class="fixed bottom-6 left-6 z-40 flex flex-col gap-3">
+        <!-- Zalo Button -->
+        <a href="https://zalo.me/0967220838" target="_blank" rel="noopener noreferrer" class="group relative flex items-center justify-center w-14 h-14 bg-blue-600 text-white rounded-full shadow-xl hover:bg-blue-700 transition transform hover:scale-110 float-badge" title="Chat Zalo: 0967220838">
+            <span class="absolute right-full mr-3 hidden group-hover:flex items-center px-3 py-1.5 bg-slate-900 text-white text-xs rounded-xl shadow-lg whitespace-nowrap border border-gold/30">Chat Zalo: 0967.220.838</span>
+            <span class="font-extrabold text-sm tracking-tighter">ZALO</span>
+        </a>
+        <!-- Messenger Button -->
+        <a href="https://www.facebook.com/gianphoicualuoiminhphat68" target="_blank" rel="noopener noreferrer" class="group relative flex items-center justify-center w-14 h-14 bg-gradient-to-tr from-sky-500 to-blue-600 text-white rounded-full shadow-xl hover:opacity-90 transition transform hover:scale-110" title="Chat Messenger">
+            <span class="absolute right-full mr-3 hidden group-hover:flex items-center px-3 py-1.5 bg-slate-900 text-white text-xs rounded-xl shadow-lg whitespace-nowrap border border-gold/30">Chat Messenger</span>
+            <i class="fab fa-facebook-messenger text-2xl"></i>
+        </a>
+        <!-- Call Button -->
+        <a href="tel:0967220838" class="group relative flex items-center justify-center w-14 h-14 bg-gold text-slate-950 rounded-full shadow-xl hover:bg-gold-light transition transform hover:scale-110" title="Gọi Ngay: 0967 220 838">
+            <span class="absolute right-full mr-3 hidden group-hover:flex items-center px-3 py-1.5 bg-slate-900 text-white text-xs rounded-xl shadow-lg whitespace-nowrap border border-gold/30">Gọi: 0967.220.838</span>
+            <i class="fas fa-phone-alt text-xl"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div class="space-y-4 md:col-span-1">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-primary border border-gold/40 flex items-center justify-center text-gold font-bold text-lg">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <span class="text-xl font-extrabold text-white">MINH PHÁT</span>
+                    </div>
+                    <p class="text-sm">Chuyên gia hàng đầu trong lĩnh vực phân phối và lắp đặt giàn phơi thông minh, cửa lưới chống muỗi và thiết bị an toàn tại TP.HCM & toàn quốc.</p>
+                    <div class="flex items-center gap-3 text-white text-lg">
+                        <a href="https://zalo.me/0967220838" target="_blank" class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center hover:bg-gold hover:text-slate-950 transition"><i class="fas fa-comment-dots"></i></a>
+                        <a href="tel:0967220838" class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center hover:bg-gold hover:text-slate-950 transition"><i class="fas fa-phone-alt"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-base mb-4 border-l-4 border-gold pl-3">Sản Phẩm Chính</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#products" class="hover:text-gold transition">1. Giàn phơi thông minh điện tử</a></li>
+                        <li><a href="#products" class="hover:text-gold transition">2. Giàn phơi quay tay gắn trần</a></li>
+                        <li><a href="#products" class="hover:text-gold transition">3. Giàn phơi xếp ngang gắn tường</a></li>
+                        <li><a href="#products" class="hover:text-gold transition">4. Lưới an toàn ban công</a></li>
+                        <li><a href="#products" class="hover:text-gold transition">5. Cửa chống muỗi hệ xếp lùa & cuốn</a></li>
+                        <li><a href="#products" class="hover:text-gold transition">6. Cửa xếp lá nhôm lá nhựa</a></li>
+                        <li><a href="#products" class="hover:text-gold transition">7. Bạt che nắng mưa / mái hiên</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-base mb-4 border-l-4 border-gold pl-3">Liên Kết Nhanh</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#home" class="hover:text-gold transition">Trang Chủ</a></li>
+                        <li><a href="#about" class="hover:text-gold transition">Về Chúng Tôi</a></li>
+                        <li><a href="#products" class="hover:text-gold transition">Danh Mục Sản Phẩm</a></li>
+                        <li><a href="#pricing" class="hover:text-gold transition">Bảng Giá Trọn Gói</a></li>
+                        <li><a href="#advantages" class="hover:text-gold transition">Ưu Điểm Nổi Bật</a></li>
+                        <li><a href="#contact" class="hover:text-gold transition">Liên Hệ Tư Vấn</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-base mb-4 border-l-4 border-gold pl-3">Thông Tin Liên Hệ</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><i class="fas fa-phone-alt text-gold mr-2"></i> <a href="tel:0967220838" class="hover:text-gold font-bold">0967 220 838</a></li>
+                        <li><i class="fas fa-phone-alt text-gold mr-2"></i> <a href="tel:0879319345" class="hover:text-gold font-bold">0879 319 345</a></li>
+                        <li><i class="fas fa-map-marker-alt text-gold mr-2"></i> Phục vụ tận nơi TP.HCM & Toàn Quốc</li>
+                        <li><i class="fas fa-clock text-gold mr-2"></i> Thứ 2 - Chủ Nhật: 8:00 - 21:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-slate-900 text-center text-xs text-slate-500">
+                &copy; 2026 Giàn Phơi Cửa Lưới Minh Phát. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Detail Modal -->
+    <div id="product-modal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-slate-900 text-white rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl border border-gold/40">
+            <button onclick="closeDetailModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-lg transition">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="w-12 h-12 rounded-2xl bg-gold/20 text-gold text-2xl flex items-center justify-center mb-4 border border-gold/30">
+                <i class="fas fa-box-open"></i>
+            </div>
+            <h3 id="modal-title" class="text-2xl font-bold text-white mb-2">Tên Sản Phẩm</h3>
+            <p id="modal-desc" class="text-slate-300 text-sm leading-relaxed mb-6">Mô tả chi tiết sản phẩm...</p>
+            <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 mb-6 space-y-2">
+                <div class="flex items-center gap-3 text-sm text-slate-200 font-medium">
+                    <i class="fas fa-check-circle text-gold"></i> Miễn phí khảo sát & lắp đặt tận nhà
+                </div>
+                <div class="flex items-center gap-3 text-sm text-slate-200 font-medium">
+                    <i class="fas fa-shield-alt text-gold"></i> Bảo hành chính hãng đến 5 năm
+                </div>
+            </div>
+            <div class="flex gap-4">
+                <a href="tel:0967220838" class="flex-1 py-3 rounded-xl bg-gold text-slate-950 font-bold text-center shadow hover:bg-gold-light transition flex items-center justify-center gap-2">
+                    <i class="fas fa-phone-alt"></i> Gọi 0967.220.838
+                </a>
+                <button onclick="closeDetailModal()" class="px-6 py-3 rounded-xl bg-slate-800 text-slate-300 font-semibold hover:bg-slate-700 transition">
+                    Đóng
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Message Box -->
+    <div id="msg-box" class="fixed bottom-6 right-6 z-50 hidden max-w-sm bg-slate-900 text-white p-4 rounded-2xl shadow-2xl border border-gold flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gold text-slate-950 flex items-center justify-center text-xl shrink-0 font-bold">
+            <i class="fas fa-check"></i>
+        </div>
+        <div>
+            <h4 class="font-bold text-sm text-gold">Thành Công!</h4>
+            <p id="msg-text" class="text-xs text-slate-300">Yêu cầu của bạn đã được gửi thành công.</p>
+        </div>
+    </div>
+
+    <!-- Script Interactions -->
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Modal Functions
+        function openDetailModal(title, desc) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-desc').innerText = desc;
+            document.getElementById('product-modal').classList.remove('hidden');
+        }
+
+        function closeDetailModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+        }
+
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('product-modal');
+            if (e.target === modal) {
+                closeDetailModal();
+            }
+        });
+
+        // Form Submission handler
+        function handleBooking(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+
+            const msgBox = document.getElementById('msg-box');
+            const msgText = document.getElementById('msg-text');
+            msgText.innerText = `Cảm ơn ${name}! Minh Phát đã nhận yêu cầu tư vấn "${service}" và sẽ liên hệ số SĐT ${phone} ngay lập tức.`;
+            msgBox.classList.remove('hidden');
+
+            document.getElementById('booking-form').reset();
+
+            setTimeout(() => {
+                msgBox.classList.add('hidden');
+            }, 6000);
+        }
+    </script>
+</body>
+</html>
